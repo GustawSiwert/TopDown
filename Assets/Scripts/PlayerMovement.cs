@@ -14,6 +14,22 @@ public class PlayerMovement : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
+        if (movement.x < 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 90);
+        }
+        else if (movement.x > 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, -90);
+        }
+        else if (movement.y < 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, -180);
+        }
+        else if (movement.y > 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
 
         if (movement.sqrMagnitude > 1)
         {
