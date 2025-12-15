@@ -28,7 +28,7 @@ public class EnemyWaveSpawner : MonoBehaviour
     public GameObject heartPrefab;
     public float heartSpawnChance = 0.1f; // 10% chans
     public Transform[] spawnPoint;
-    [SerializeField] win winScreen;
+    //[SerializeField] win winScreen;
 
 
     void SpawnWave()
@@ -63,7 +63,7 @@ public class EnemyWaveSpawner : MonoBehaviour
         }
 
         Debug.Log("?? Alla vågor klara!");
-        winScreen.Show();
+        //winScreen.Show();
 
     }
 
@@ -79,8 +79,8 @@ public class EnemyWaveSpawner : MonoBehaviour
             GameObject enemy = Instantiate(wave.enemyPrefab, spawnPoint.position, Quaternion.identity);
 
             // Fienden berättar för spawnern när den dör
-            Enemy enemyScript = enemy.AddComponent<Enemy>();
-            enemyScript.spawner = this;
+            //Enemy enemyScript = enemy.AddComponent<Enemy>();
+            //enemyScript.spawner = this;
 
             yield return new WaitForSeconds(1f / wave.spawnRate);
         }
