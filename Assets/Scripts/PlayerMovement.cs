@@ -14,29 +14,30 @@ public class PlayerMovement : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        if (movement.x < 0)
+        if (movement.x < 0) // x is less than 0 
         {
             transform.rotation = Quaternion.Euler(0, 0, 90);
         }
-        else if (movement.x > 0)
+        else if (movement.x > 0) // x is greater than 0
         {
             transform.rotation = Quaternion.Euler(0, 0, -90);
         }
-        else if (movement.y < 0)
+        else if (movement.y < 0) // y is less than 0
         {
             transform.rotation = Quaternion.Euler(0, 0, -180);
         }
-        else if (movement.y > 0)
+        else if (movement.y > 0) // y is greater than 0
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
+        
 
         if (movement.sqrMagnitude > 1)
         {
             movement.Normalize();
         }
 
-        if (movement.sqrMagnitude > 0.1f) 
+        if (movement.sqrMagnitude > 0.1f)
         {
             animator.SetFloat("Horizontal", movement.x);
             animator.SetFloat("Vertical", movement.y);
@@ -63,12 +64,13 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Use Rigidbody2D.velocity for smooth physics-based movement
         rb.linearVelocity = movement * moveSpeed;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "NextLevel")
-	    {
+        {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
